@@ -7,3 +7,12 @@ INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID) VA
 [2024-05-15 22:26:57] [ INFO ] [BD:30] tabla creada con exito
 [2024-05-15 22:47:28] [ INFO ] [BD:30] tabla creada con exito
 [2024-05-15 22:47:28] [ INFO ] [PacienteDAOH2:48] iniciando la busqueda de un paciente por id: 1
+[2024-05-15 21:56:33] [ INFO ] [BD:35] tabla creada con exito
+[2024-05-15 22:16:55] [ INFO ] [OdontologoDAOMem:39] Lista de odontologos obtenida con exito
+[2024-05-15 22:18:35] [ INFO ] [OdontologoDAOMem:39] Lista de odontologos obtenida con exito
+[2024-05-15 22:18:35] [ INFO ] [BD:51] Inicializada lista de odontologos
+[2024-05-15 22:18:35] [ INFO ] [BD:57] Odontologos agregados a la lista con exito
+[2024-05-15 22:18:35] [ INFO ] [OdontologoDAOMem:18] Odontologo guardado con exito en la lista
+[2024-05-15 22:24:10] [ INFO ] [OdontologoDAOMem:39] Lista de odontologos obtenida con exito
+[2024-05-15 22:24:10] [ INFO ] [BD:52] Odontologos agregados a la lista con exito
+[2024-05-15 22:24:10] [ INFO ] [OdontologoDAOMem:18] Odontologo guardado con exito en la lista

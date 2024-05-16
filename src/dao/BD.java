@@ -1,12 +1,15 @@
 package dao;
 
 import model.Domicilio;
+import model.Odontologo;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BD {
  private static final Logger logger= Logger.getLogger(BD.class);
@@ -17,7 +20,11 @@ public class BD {
             "CREATE TABLE DOMICILIO (ID INT AUTO_INCREMENT PRIMARY KEY, CALLE VARCHAR(100)  NOT NULL, NUMERO INT NOT NULL, LOCALIDAD VARCHAR(100)  NOT NULL, " +
             "PROVINCIA VARCHAR(100)  NOT NULL)";
     private static final String SQL_PRUEBA="INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID) VALUES('Jorgito','Pereyra','123456','2024-05-15',1),('Claudia','Heredia','11111111','2024-05-10',2); " +
-            "INSERT INTO DOMICILIO (CALLE, NUMERO, LOCALIDAD, PROVINCIA) VALUES ('Siempre viva',742,'Springfield','USA'), ('Siempre viva',742,'Springfield','USA')";
+            "INSERT INTO DOMICILIO (CALLE, NUMERO, LOCALIDAD, PROVINCIA) VALUES ('Siempre viva',742,'Springfield','USA'), ('Siempre viva',742,'Springfield','USA');" +
+            "INSERT INTO ODONTOLOGO (NUMERO_MATRICULA, NOMBRE, APELLIDO) VALUES ('ABC123','Juan','Lopez'), ('DEF456','Roberto','Perez');";
+
+    private static final String SQL_DROP_CREATE_ODONTOLOGO="DROP TABLE IF EXISTS ODONTOLOGO; " +
+            "CREATE TABLE ODONTOLOGO (ID INT AUTO_INCREMENT PRIMARY KEY, NUMERO_MATRICULA VARCHAR(100)  NOT NULL, NOMBRE VARCHAR(100)  NOT NULL, APELLIDO VARCHAR(100)  NOT NULL)";
 
     public static void crearTablas(){
         Connection connection= null;
@@ -26,16 +33,29 @@ public class BD {
             Statement statement= connection.createStatement();
             statement.execute(SQL_DROP_CREATE_PACIENTES);
             statement.execute(SQL_DROP_CREATE_DOMICILIOS);
+            statement.execute(SQL_DROP_CREATE_ODONTOLOGO);
+            logger.info("Tabla odontologo creada con exito");
             statement.execute(SQL_PRUEBA);
-            logger.info("tabla creada con exito");
+            logger.info("tablas creadas con exito");
 
         }catch (Exception e){
             logger.warn(e.getMessage());
         }
 
     }
+
+    public static List<Odontologo> listaDeOdontologos = new ArrayList<Odontologo>();
+
+    public static void agregarOdontologosLista() {
+        listaDeOdontologos.add(new Odontologo("ABC123","Luis","Ruiz"));
+        listaDeOdontologos.add(new Odontologo("CBA321","Mario","Doe"));
+        logger.info("Odontologos agregados a la lista con exito");
+    }
+
     public static Connection getConnection() throws Exception{
         Class.forName("org.h2.Driver");
         return DriverManager.getConnection("jdbc:h2:~/C2ClinicaOdontologica","sa","sa");
     }
+
+    //comment
 }
